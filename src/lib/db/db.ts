@@ -1,5 +1,6 @@
-import Dexie, { Table as DexieTable } from "dexie";
-import { OracleTable, Entry, Setting } from "./schema";
+import Dexie from "dexie";
+import type { Table as DexieTable } from "dexie";
+import type { OracleTable, Entry, Setting } from "./schema";
 
 export class OracleDb extends Dexie {
   oracleTables!: DexieTable<OracleTable>;

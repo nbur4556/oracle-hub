@@ -1,4 +1,5 @@
 import { db } from "./db";
+//TODO: feat/data-layer: Settings is never used in this service. Should it be? probably...
 import type { Setting } from "./schema";
 
 export const SettingService = {
