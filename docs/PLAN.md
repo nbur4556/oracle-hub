@@ -35,4 +35,9 @@
 
 ## Future Tasks
 - [ ] Payment method (Stripe? External Shop?) for purchasing full version of Oracle Hub
-- [ ] Dark Mode
+- [ ] Dark Mode and/or theming
+- [ ] Update the readme
+- [ ] Customize the UI
+- [ ] Wrap the PWA for app stores
+    - [ ] Get app onto Google Play
+    - [ ] Get app onto Apple App Store
