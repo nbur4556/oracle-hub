@@ -41,3 +41,15 @@
 - [ ] Wrap the PWA for app stores
     - [ ] Get app onto Google Play
     - [ ] Get app onto Apple App Store
+- [ ] Tables should be able to evenly devide entry ranges automatically, with ability for the users to edit afterwards
+- [ ] Edit table route from the tables page
+    - [ ] Delete entries from this view
+    - [ ] Change values from this view
+    - [ ] Change ranges from this view
+- [ ] Game system should not be required
+    - [ ] Also when creating a new table
+- [ ] Game systems route lists all the game systems that a table has been assigned to. Able to browse and select game systems to view all associated tables
+    - [ ] Could be cool to allow adding the games cover art to the game system
+- [ ] Component testing
+- [ ] Visual Regression testing
+- [ ] Sort functionality on dashboard
