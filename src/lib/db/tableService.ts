@@ -1,5 +1,5 @@
 import { db } from "./db";
-import type { Table, Entry, Setting } from "./schema";
+import type { Table } from "./schema";
 
 export const TableService = {
   async createTable(table: Omit<Table, "id">) {

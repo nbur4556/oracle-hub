@@ -1,7 +1,9 @@
-import Dexie, { Table as DexieTable } from "dexie";
-import { Table, Entry, Setting } from "./schema";
+import Dexie from "dexie";
+import type { Table as DexieTable } from "dexie";
+import type { Table, Entry, Setting } from "./schema";
 
 export class OracleDb extends Dexie {
+  //FIX: feat/data-layer: property tables in OracleDb is not defined? Why?
   tables!: DexieTable<Table>;
   entries!: DexieTable<Entry>;
   settings!: DexieTable<Setting>;
