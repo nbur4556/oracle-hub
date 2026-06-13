@@ -1,7 +1,6 @@
 import { db } from "./db";
 import type { Setting } from "./schema";
 
-//FIX: feat/data-layer: type not found (db.settings), Do I need to do something to initialize the db first?
 export const SettingService = {
   async getSetting(key: string): Promise<any> {
     const setting = await db.settings.get(key);

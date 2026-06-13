@@ -1,7 +1,6 @@
 import { db } from "./db";
 import type { Entry } from "./schema";
 
-//FIX: feat/data-layer: type not found (property 'entries' does not exist on type OracleDB). Do I need to do something to initialize the db first?
 export const EntryService = {
   async createEntry(entry: Omit<Entry, "id">) {
     return await db.entries.add(entry);

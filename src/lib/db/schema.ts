@@ -1,10 +1,8 @@
-// TODO: feat/data-layer: game should probably be optional. Not all oracles come from a specific game
-// TODO: feat/data-layer: how do we want to handle type? I was kind of thinking the type would just be a tag...
 export interface Table {
   id?: number;
   title: string;
-  game: string;
-  type: string;
+  game?: string;
+  type?: string;
   tags: string[];
   createdAt: number;
 }
@@ -18,7 +16,10 @@ export interface Entry {
   pointerTableId?: number;
 }
 
-//INFO: feat/data-layer: I think I just need a bit of clarification on what this setting interface is actually going to be used for?
+/**
+ * Setting is used for application-wide configuration, such as 
+ * the unlock token for unlimited tables or the configurable demo limit.
+ */
 export interface Setting {
   key: string;
   value: any;
