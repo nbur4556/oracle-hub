@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { TableService } from '$lib/db/tableService';
+	import { OracleTableService } from '$lib/db/oracleTableService';
 	import { EntryService } from '$lib/db/entryService';
 	import { SettingService } from '$lib/db/settingService';
 	import { goto } from '$app/navigation';
@@ -66,7 +66,7 @@
 			isSaving = true;
 			
 			// Check demo limit
-			const currentTables = await TableService.getTables();
+			const currentTables = await OracleTableService.getOracleTables();
 			const isUnlocked = await SettingService.getSetting('unlocked');
 			const limit = await SettingService.getSetting('demo_limit') || 5;
 
@@ -75,7 +75,7 @@
 				return;
 			}
 
-			const tableId = await TableService.createTable({
+			const tableId = await OracleTableService.createOracleTable({
 				title,
 				game,
 				type,

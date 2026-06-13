@@ -1,14 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { TableService } from '$lib/db/tableService';
+	import { OracleTableService } from '$lib/db/oracleTableService';
+	import type { OracleTable } from '$lib/db/schema';
 	import TableCard from '$lib/components/TableCard.svelte';
 
-	let tables = $state([]);
+	let tables = $state<OracleTable[]>([]);
 	let searchQuery = $state('');
 	let isAdding = $state(false);
 
 	async function loadTables() {
-		tables = await TableService.getTables();
+		tables = await OracleTableService.getOracleTables();
 	}
 
 	onMount(() => {
@@ -18,7 +19,7 @@
 	let filteredTables = $derived(
 		tables.filter(t => 
 			t.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-			t.game.toLowerCase().includes(searchQuery.toLowerCase()) || 
+			(t.game || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
 			t.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
 		)
 	);
