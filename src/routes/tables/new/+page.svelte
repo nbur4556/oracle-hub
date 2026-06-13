@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { TableService } from '$lib/db/tableService';
+	import { OracleTableService } from '$lib/db/oracleTableService';
 	import { EntryService } from '$lib/db/entryService';
 	import { SettingService } from '$lib/db/settingService';
 	import { goto } from '$app/navigation';
@@ -66,7 +66,7 @@
 			isSaving = true;
 			
 			// Check demo limit
-			const currentTables = await TableService.getTables();
+			const currentTables = await OracleTableService.getOracleTables();
 			const isUnlocked = await SettingService.getSetting('unlocked');
 			const limit = await SettingService.getSetting('demo_limit') || 5;
 
@@ -75,7 +75,7 @@
 				return;
 			}
 
-			const tableId = await TableService.createTable({
+			const tableId = await OracleTableService.createOracleTable({
 				title,
 				game,
 				type,
@@ -120,20 +120,20 @@
 		<h3 class="font-semibold text-slate-700 border-b pb-2">Basic Information</h3>
 		<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 			<div class="space-y-1">
-				<label class="text-xs font-medium text-slate-500 uppercase">Title *</label>
-				<input bind:value={title} type="text" placeholder="e.g. Random Loot" class="w-full px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500" />
+				<label for="title" class="text-xs font-medium text-slate-500 uppercase">Title *</label>
+				<input id="title" bind:value={title} type="text" placeholder="e.g. Random Loot" class="w-full px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500" />
 			</div>
 			<div class="space-y-1">
-				<label class="text-xs font-medium text-slate-500 uppercase">Game System *</label>
-				<input bind:value={game} type="text" placeholder="e.g. Cyberpunk RED" class="w-full px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500" />
+				<label for="game" class="text-xs font-medium text-slate-500 uppercase">Game System *</label>
+				<input id="game" bind:value={game} type="text" placeholder="e.g. Cyberpunk RED" class="w-full px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500" />
 			</div>
 			<div class="space-y-1">
-				<label class="text-xs font-medium text-slate-500 uppercase">Type</label>
-				<input bind:value={type} type="text" placeholder="e.g. Treasure" class="w-full px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500" />
+				<label for="type" class="text-xs font-medium text-slate-500 uppercase">Type</label>
+				<input id="type" bind:value={type} type="text" placeholder="e.g. Treasure" class="w-full px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500" />
 			</div>
 			<div class="space-y-1">
-				<label class="text-xs font-medium text-slate-500 uppercase">Tags (comma separated)</label>
-				<input bind:value={tags} type="text" placeholder="loot, cyberpunk, high-tech" class="w-full px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500" />
+				<label for="tags" class="text-xs font-medium text-slate-500 uppercase">Tags (comma separated)</label>
+				<input id="tags" bind:value={tags} type="text" placeholder="loot, cyberpunk, high-tech" class="w-full px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-indigo-500" />
 			</div>
 		</div>
 	</div>

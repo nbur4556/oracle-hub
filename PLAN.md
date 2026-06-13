@@ -32,3 +32,7 @@
 - [ ] Finalize PWA manifest (icons, theme colors).
 - [ ] Audit mobile responsiveness (ensure it's usable at a table).
 - [ ] Add a simple splash screen/loading state.
+
+## Future Tasks
+- [ ] Payment method (Stripe? External Shop?) for purchasing full version of Oracle Hub
+- [ ] Dark Mode

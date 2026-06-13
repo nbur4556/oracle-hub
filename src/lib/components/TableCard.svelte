@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Table } from '$lib/db/schema';
+	import type { OracleTable } from '$lib/db/schema';
 
-	let { table } = $props<{ table: Table }>();
+	let { table } = $props<{ table: OracleTable }>();
 </script>
 
 <div class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer group">

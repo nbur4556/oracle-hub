@@ -1,18 +1,19 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { TableService } from '$lib/db/tableService';
+	import { OracleTableService } from '$lib/db/oracleTableService';
 	import { EntryService } from '$lib/db/entryService';
-	import type { Table, Entry } from '$lib/db/schema';
+	import type { OracleTable, Entry } from '$lib/db/schema';
 
 	let { data } = $props();
 	let tableId = $derived(Number($page.params.id));
 	
-	let table = $state<Table | null>(null);
+	let table = $state<OracleTable | null>(null);
 	let entries = $state<Entry[]>([]);
 	
 	async function loadTable() {
-		table = await TableService.getTableById(tableId);
+		const res = await OracleTableService.getOracleTableById(tableId);
+		table = res ?? null;
 		if (table) {
 			entries = await EntryService.getEntriesByTable(tableId);
 		}
@@ -24,7 +25,7 @@
 
 	async function deleteTable() {
 		if (confirm('Are you sure you want to delete this table? All entries will be lost.')) {
-			await TableService.deleteTable(tableId);
+			await OracleTableService.deleteOracleTable(tableId);
 			await EntryService.deleteEntriesByTable(tableId);
 			// Redirect to dashboard
 			window.location.href = '/';
