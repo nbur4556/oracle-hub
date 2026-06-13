@@ -53,3 +53,6 @@
 - [ ] Component testing
 - [ ] Visual Regression testing
 - [ ] Sort functionality on dashboard
+- [ ] Full unit (or component?) tests
+    - [ ] unit (or component?) tests for feat/table-management functionality
+    - [ ] unit (or component?) tests for feat/implement-new-tables functionality
