@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	import { OracleTableService } from '$lib/db/oracleTableService';
 	import type { OracleTable } from '$lib/db/schema';
 	import TableCard from '$lib/components/TableCard.svelte';
 
 	let tables = $state<OracleTable[]>([]);
 	let searchQuery = $state('');
-	let isAdding = $state(false);
 
 	async function loadTables() {
 		tables = await OracleTableService.getOracleTables();
@@ -32,7 +32,7 @@
 			<p class="text-sm text-slate-500">Quickly access your random generators.</p>
 		</div>
 		<button 
-			onclick={() => isAdding = true}
+			onclick={() => goto('/tables/new')}
 			class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition-colors flex items-center gap-2 w-fit"
 		>
 			<span class="text-lg">+</span> New Table
