@@ -9,7 +9,7 @@ Oracle Hub is a local-first PWA designed for TTRPG players and GMs to consolidat
 - **Creation:** Users can create tables with a title, game system (e.g., "Cyberpunk RED", "D&D 5e"), type (e.g., "NPC Motivations", "Loot"), and custom tags.
 - **Entries:** Tables consist of a list of entries. Each entry has:
     - A value (the result text).
-    - An optional roll range (e.g., 1-10).
+    - A mandatory roll range (e.g., 1-10). The system must enforce a complete, non-overlapping range during table creation.
     - An optional "Pointer" to another table (Nested Roll).
 - **Search & Filter:** Fast filtering by game, type, and tags to find the right table mid-game.
 
@@ -23,9 +23,12 @@ Oracle Hub is a local-first PWA designed for TTRPG players and GMs to consolidat
 - **PWA:** Must be installable on mobile and desktop, with a Service Worker to ensure it boots without an internet connection.
 
 ### 2.4 Monetization Model
-- **The Demo:** The app is free to use for a limited number of tables (e.g., 5 tables).
-- **The Unlock:** A one-time payment unlocks "Unlimited Tables."
-- **Verification:** Unlock status is handled via a license key or signed token stored in local storage, validated via a payment provider (Stripe).
+- **The Demo:** The app is free to use for a limited number of tables (default: 5 tables). This limit is configurable.
+- **The Unlock:** A one-time unlock provides "Unlimited Tables."
+- **Verification:** For the initial phase, this is an honor-system check for a valid auth token stored in local storage.
+
+### 2.5 Data Portability
+- **Import/Export:** Users can export their entire library of tables to a JSON file and import from a JSON file to prevent data loss when clearing browser cache.
 
 ## 3. Technical Specifications
 
@@ -34,7 +37,7 @@ Oracle Hub is a local-first PWA designed for TTRPG players and GMs to consolidat
 - **Database:** Dexie.js (Wrapper for IndexedDB).
 - **Styling:** Tailwind CSS.
 - **PWA Plugin:** `vite-plugin-pwa`.
-- **Payments:** Stripe (for the one-time unlock).
+- **Payments:** Initial implementation relies on a simple auth token; Stripe integration deferred to later phases.
 
 ### 3.2 Data Schema (Dexie)
 - `tables`: `id` (pk), `title`, `game`, `type`, `tags` (array), `createdAt`.
