@@ -8,6 +8,7 @@
 	let tables = $state<OracleTable[]>([]);
 	let searchQuery = $state('');
 
+	//TODO: use a functional component with error handling. See notes on the tables/[id] route 
 	async function loadTables() {
 		tables = await OracleTableService.getOracleTables();
 	}
@@ -16,7 +17,9 @@
 		loadTables();
 	});
 
+	// FIX: Search does not seem to be working for types
 	let filteredTables = $derived(
+		// TODO: should rename 't', it is not a good variable name. It is not descriptive. "table" should do just fine.
 		tables.filter(t => 
 			t.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
 			(t.game || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -25,6 +28,7 @@
 	);
 </script>
 
+<!-- Dashboard Page -->
 <div class="space-y-6">
 	<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
 		<div>

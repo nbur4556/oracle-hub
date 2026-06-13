@@ -16,6 +16,8 @@
 	let error = $state('');
 	let isSaving = $state(false);
 
+	//TODO: THOROUGHLY test this route, for now it works good during basic usage
+
 	//TODO: implement-new-tables: When adding a new row, the range start should start at the next number from the previous row. Makes it a little nicer for the user to enter multiple rows.
 	//TODO: implement-new-tables: The rangeEnd should default to one above the rangeStart, for faster ux for the user.
 	async function addEntry() {
@@ -52,6 +54,7 @@
 		error = '';
 		
 		// Validate basic info
+		//FIX: Game should not be required. Not all oracles will be associated with a game
 		if (!title || !game) {
 			error = 'Title and Game system are required.';
 			return;
