@@ -7,10 +7,10 @@
 - [x] Configure `vite-plugin-pwa` for offline capabilities.
 - [x] Install Dexie.js.
 
-## Phase 2: Data Layer
-- [ ] Define Dexie database schema (`tables`, `entries`, `settings`).
-- [ ] Create a singleton `db.ts` service for database access.
-- [ ] Implement basic table CRUD operations.
+## Phase 2: Data Layer ✅
+- [x] Define Dexie database schema (`tables`, `entries`, `settings`).
+- [x] Create a singleton `db.ts` service for database access.
+- [x] Implement basic table CRUD operations.
 
 ## Phase 3: Table Management UI
 - [ ] Build a "Table List" dashboard.

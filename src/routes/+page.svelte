@@ -1,2 +1,59 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { TableService } from '$lib/db/tableService';
+	import TableCard from '$lib/components/TableCard.svelte';
+
+	let tables = $state([]);
+	let searchQuery = $state('');
+	let isAdding = $state(false);
+
+	async function loadTables() {
+		tables = await TableService.getTables();
+	}
+
+	onMount(() => {
+		loadTables();
+	});
+
+	let filteredTables = $derived(
+		tables.filter(t => 
+			t.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+			t.game.toLowerCase().includes(searchQuery.toLowerCase()) || 
+			t.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+		)
+	);
+</script>
+
+<div class="space-y-6">
+	<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+		<div>
+			<h2 class="text-2xl font-bold text-slate-800">My Tables</h2>
+			<p class="text-sm text-slate-500">Quickly access your random generators.</p>
+		</div>
+		<button 
+			onclick={() => isAdding = true}
+			class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition-colors flex items-center gap-2 w-fit"
+		>
+			<span class="text-lg">+</span> New Table
+		</button>
+	</div>
+
+	<div class="relative">
+		<input 
+			type="text" 
+			bind:value={searchQuery} 
+			placeholder="Search by title, game, or tag..." 
+			class="w-full px-4 py-2 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
+		/>
+	</div>
+
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+		{#each filteredTables as table}
+			<TableCard {table} />
+		{:else}
+			<div class="text-center py-12 bg-white border-2 border-dashed border-slate-200 rounded-xl">
+				<p class="text-slate-500">No tables found. Create your first one!</p>
+			</div>
+		{/each}
+	</div>
+</div>

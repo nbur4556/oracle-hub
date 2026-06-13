@@ -6,4 +6,24 @@
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
-{@render children()}
+
+<div class="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-indigo-100 selection:text-indigo-700">
+	<header class="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between sticky top-0 z-10">
+		<h1 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+			<span class="bg-indigo-600 text-white px-2 py-0.5 rounded text-sm mr-1">🎲</span>
+			Oracle Hub
+		</h1>
+		<nav class="flex items-center gap-4">
+			<a href="/" class="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">Dashboard</a>
+		</nav>
+	</header>
+
+	<main class="max-w-4xl mx-auto p-4 pb-20">
+		{@render children()}
+	</main>
+
+	<footer class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-4 py-2 text-center text-xs text-slate-500">
+		&copy; {new Date().getFullYear()} Oracle Hub &bull; Local-First
+	</footer>
+</div>
+
