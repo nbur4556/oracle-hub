@@ -56,3 +56,5 @@
 - [ ] Full unit (or component?) tests
     - [ ] unit (or component?) tests for feat/table-management functionality
     - [ ] unit (or component?) tests for feat/implement-new-tables functionality
+- [ ] Clear messaging AT STARTUP and THROUGHOUT APP USAGE that the users data is not permanent. Recommend that that user regularly export their data.
+    - [ ] Maybe have a file (on phone or at computer) that the app exports to by default. On import, it can also check this directory first and request importing those files.
