@@ -1,4 +1,5 @@
 <script lang="ts">
+	//TODO: it should not be so easy to delete entries from the table. Instead, the delete action column should only be shown in an edit view. The edit view should also allow changing the values and ranges
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { OracleTableService } from '$lib/db/oracleTableService';

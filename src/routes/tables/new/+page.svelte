@@ -16,6 +16,8 @@
 	let error = $state('');
 	let isSaving = $state(false);
 
+	//TODO: implement-new-tables: When adding a new row, the range start should start at the next number from the previous row. Makes it a little nicer for the user to enter multiple rows.
+	//TODO: implement-new-tables: The rangeEnd should default to one above the rangeStart, for faster ux for the user.
 	async function addEntry() {
 		entries = [...entries, { value: '', rangeStart: 1, rangeEnd: 1, pointerTableId: undefined }];
 	}
