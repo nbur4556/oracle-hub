@@ -1,32 +1,39 @@
-import { db } from './db';
-import type { Table, Entry, Setting } from './schema';
+import { db } from "./db";
+import type { Table, Entry, Setting } from "./schema";
 
 export const TableService = {
-    async createTable(table: Omit<Table, 'id'>) {
-        return await db.tables.add(table);
-    },
+  async createTable(table: Omit<Table, "id">) {
+    //FIX: feat/data-layer: db.tables.add property does not exist on db.tables
+    return await db.tables.add(table);
+  },
 
-    async getTables() {
-        return await db.tables.toArray();
-    },
+  async getTables() {
+    //FIX: feat/data-layer: db.tables.toArray property does not exist on db.tables
+    return await db.tables.toArray();
+  },
 
-    async getTableById(id: number) {
-        return await db.tables.get(id);
-    },
+  async getTableById(id: number) {
+    //FIX: feat/data-layer: db.tables.get property does not exist on db.tables
+    return await db.tables.get(id);
+  },
 
-    async updateTable(id: number, updates: Partial<Table>) {
-        return await db.tables.update(id, updates);
-    },
+  async updateTable(id: number, updates: Partial<Table>) {
+    //FIX: feat/data-layer: db.tables.update property does not exist on db.tables
+    return await db.tables.update(id, updates);
+  },
 
-    async deleteTable(id: number) {
-        return await db.tables.delete(id);
-    },
+  async deleteTable(id: number) {
+    //FIX: feat/data-layer: db.tables.delete property does not exist on db.tables
+    return await db.tables.delete(id);
+  },
 
-    async getTablesByGame(game: string) {
-        return await db.tables.where('game').equals(game).toArray();
-    },
+  async getTablesByGame(game: string) {
+    //FIX: feat/data-layer: db.tables.where property does not exist on db.tables
+    return await db.tables.where("game").equals(game).toArray();
+  },
 
-    async getTablesByTag(tag: string) {
-        return await db.tables.where('tags').equals(tag).toArray();
-    }
+  async getTablesByTag(tag: string) {
+    //FIX: feat/data-layer: db.tables.where property does not exist on db.tables
+    return await db.tables.where("tags").equals(tag).toArray();
+  },
 };
