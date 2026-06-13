@@ -45,7 +45,7 @@ Oracle Hub is a local-first PWA designed for TTRPG players and GMs to consolidat
 - `settings`: `key`, `value` (for storage of the unlock token).
 
 ## 4. User Flow
-1. **Landing:** User opens PWA $\rightarrow$ views dashboard of tables.
-2. **Setup:** User adds a new table $\rightarrow$ adds entries $\rightarrow$ assigns tags.
-3. **Gameplay:** User searches for "Combat Table" $\rightarrow$ clicks "Roll" $\rightarrow$ gets "Ambush!" $\rightarrow$ app prompts "Roll on Ambush Table?" $\rightarrow$ User rolls.
-4. **Upsell:** User tries to create the 6th table $\rightarrow$ prompt to purchase lifetime unlock.
+1. **Landing:** User opens PWA >> views dashboard of tables.
+2. **Setup:** User adds a new table >> adds entries >> assigns tags.
+3. **Gameplay:** User searches for "Combat Table" >> clicks "Roll" >> gets "Ambush!" >> app prompts "Roll on Ambush Table?" >> User rolls.
+4. **Upsell:** User tries to create the 6th table >> prompt to purchase lifetime unlock.

@@ -7,10 +7,10 @@
 - [x] Configure `vite-plugin-pwa` for offline capabilities.
 - [x] Install Dexie.js.
 
-## Phase 2: Data Layer
-- [ ] Define Dexie database schema (`tables`, `entries`, `settings`).
-- [ ] Create a singleton `db.ts` service for database access.
-- [ ] Implement basic table CRUD operations.
+## Phase 2: Data Layer ✅
+- [x] Define Dexie database schema (`tables`, `entries`, `settings`).
+- [x] Create a singleton `db.ts` service for database access.
+- [x] Implement basic table CRUD operations.
 
 ## Phase 3: Table Management UI
 - [ ] Build a "Table List" dashboard.
@@ -32,3 +32,7 @@
 - [ ] Finalize PWA manifest (icons, theme colors).
 - [ ] Audit mobile responsiveness (ensure it's usable at a table).
 - [ ] Add a simple splash screen/loading state.
+
+## Future Tasks
+- [ ] Payment method (Stripe? External Shop?) for purchasing full version of Oracle Hub
+- [ ] Dark Mode
