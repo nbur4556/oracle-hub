@@ -1,32 +1,32 @@
 import { db } from "./db";
-import type { Table } from "./schema";
+import type { OracleTable, Entry, Setting } from "./schema";
 
 export const TableService = {
-  async createTable(table: Omit<Table, "id">) {
-    return await db.tables.add(table);
+  async createTable(table: Omit<OracleTable, "id">) {
+    return await db.oracleTables.add(table);
   },
 
   async getTables() {
-    return await db.tables.toArray();
+    return await db.oracleTables.toArray();
   },
 
   async getTableById(id: number) {
-    return await db.tables.get(id);
+    return await db.oracleTables.get(id);
   },
 
-  async updateTable(id: number, updates: Partial<Table>) {
-    return await db.tables.update(id, updates);
+  async updateTable(id: number, updates: Partial<OracleTable>) {
+    return await db.oracleTables.update(id, updates);
   },
 
   async deleteTable(id: number) {
-    return await db.tables.delete(id);
+    return await db.oracleTables.delete(id);
   },
 
   async getTablesByGame(game: string) {
-    return await db.tables.where("game").equals(game).toArray();
+    return await db.oracleTables.where("game").equals(game).toArray();
   },
 
   async getTablesByTag(tag: string) {
-    return await db.tables.where("tags").equals(tag).toArray();
+    return await db.oracleTables.where("tags").equals(tag).toArray();
   },
 };
