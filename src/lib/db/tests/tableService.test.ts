@@ -1,111 +1,112 @@
-import { describe, it, expect } from 'vitest';
-import { TableService } from '../tableService';
+import { describe, it, expect } from "vitest";
+import { OracleTableService } from "../oracleTableService";
 
-describe('TableService', () => {
-  it('should create a table', async () => {
+describe("TableService", () => {
+  it("should create a table", async () => {
     const tableData = {
-      title: 'Test Table',
-      game: 'Test Game',
-      type: 'Test Type',
-      tags: ['tag1', 'tag2'],
+      title: "Test Table",
+      game: "Test Game",
+      type: "Test Type",
+      tags: ["tag1", "tag2"],
       createdAt: Date.now(),
     };
 
-    const id = await TableService.createTable(tableData);
+    const id = await OracleTableService.createOracleTable(tableData);
     expect(id).toBeDefined();
-    expect(typeof id).toBe('number');
+    expect(typeof id).toBe("number");
 
-    const table = await TableService.getTableById(id);
+    const table = await OracleTableService.getOracleTableById(id);
     expect(table).toEqual({ id, ...tableData });
   });
 
-  it('should get all tables', async () => {
-    await TableService.createTable({
-      title: 'Table 1',
-      game: 'Game 1',
-      type: 'Type 1',
+  it("should get all tables", async () => {
+    await OracleTableService.createOracleTable({
+      title: "Table 1",
+      game: "Game 1",
+      type: "Type 1",
       tags: [],
       createdAt: Date.now(),
     });
-    await TableService.createTable({
-      title: 'Table 2',
-      game: 'Game 2',
-      type: 'Type 2',
+    await OracleTableService.createOracleTable({
+      title: "Table 2",
+      game: "Game 2",
+      type: "Type 2",
       tags: [],
       createdAt: Date.now(),
     });
 
-    const tables = await TableService.getTables();
+    const tables = await OracleTableService.getOracleTables();
     expect(tables).toHaveLength(2);
   });
 
-  it('should update a table', async () => {
-    const id = await TableService.createTable({
-      title: 'Original',
-      game: 'Game',
-      type: 'Type',
+  it("should update a table", async () => {
+    const id = await OracleTableService.createOracleTable({
+      title: "Original",
+      game: "Game",
+      type: "Type",
       tags: [],
       createdAt: Date.now(),
     });
 
-    await TableService.updateTable(id, { title: 'Updated' });
-    const table = await TableService.getTableById(id);
-    expect(table?.title).toBe('Updated');
+    await OracleTableService.updateOracleTable(id, { title: "Updated" });
+    const table = await OracleTableService.getOracleTableById(id);
+    expect(table?.title).toBe("Updated");
   });
 
-  it('should delete a table', async () => {
-    const id = await TableService.createTable({
-      title: 'Delete Me',
-      game: 'Game',
-      type: 'Type',
+  it("should delete a table", async () => {
+    const id = await OracleTableService.createOracleTable({
+      title: "Delete Me",
+      game: "Game",
+      type: "Type",
       tags: [],
       createdAt: Date.now(),
     });
 
-    await TableService.deleteTable(id);
-    const table = await TableService.getTableById(id);
+    await OracleTableService.deleteOracleTable(id);
+    const table = await OracleTableService.getOracleTableById(id);
     expect(table).toBeUndefined();
   });
 
-  it('should filter tables by game', async () => {
-    await TableService.createTable({
-      title: 'Game A Table',
-      game: 'Game A',
-      type: 'Type',
+  it("should filter tables by game", async () => {
+    await OracleTableService.createOracleTable({
+      title: "Game A Table",
+      game: "Game A",
+      type: "Type",
       tags: [],
       createdAt: Date.now(),
     });
-    await TableService.createTable({
-      title: 'Game B Table',
-      game: 'Game B',
-      type: 'Type',
+    await OracleTableService.createOracleTable({
+      title: "Game B Table",
+      game: "Game B",
+      type: "Type",
       tags: [],
       createdAt: Date.now(),
     });
 
-    const gameATables = await TableService.getTablesByGame('Game A');
+    const gameATables =
+      await OracleTableService.getOracleTablesByGame("Game A");
     expect(gameATables).toHaveLength(1);
-    expect(gameATables[0].title).toBe('Game A Table');
+    expect(gameATables[0].title).toBe("Game A Table");
   });
 
-  it('should filter tables by tag', async () => {
-    await TableService.createTable({
-      title: 'Tag A Table',
-      game: 'Game',
-      type: 'Type',
-      tags: ['tag-a'],
+  it("should filter tables by tag", async () => {
+    await OracleTableService.createOracleTable({
+      title: "Tag A Table",
+      game: "Game",
+      type: "Type",
+      tags: ["tag-a"],
       createdAt: Date.now(),
     });
-    await TableService.createTable({
-      title: 'Tag B Table',
-      game: 'Game',
-      type: 'Type',
-      tags: ['tag-b'],
+    await OracleTableService.createOracleTable({
+      title: "Tag B Table",
+      game: "Game",
+      type: "Type",
+      tags: ["tag-b"],
       createdAt: Date.now(),
     });
 
-    const tagATables = await TableService.getTablesByTag('tag-a');
+    const tagATables = await OracleTableService.getOracleTablesByTag("tag-a");
     expect(tagATables).toHaveLength(1);
-    expect(tagATables[0].title).toBe('Tag A Table');
+    expect(tagATables[0].title).toBe("Tag A Table");
   });
 });
