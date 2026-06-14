@@ -91,6 +91,8 @@ describe("TableService", () => {
     expect(gameATables[0].title).toBe("Game A Table");
   });
 
+  //TODO: should have test to filter tables by type
+
   it("should filter tables by tag", async () => {
     await OracleTableService.createOracleTable({
       title: "Tag A Table",
