@@ -10,7 +10,7 @@
 
 **Role:** Lead Frontend & Local-DB Engineer
 
-**Objective:** Implement a high-performance, offline-first PWA according to the specified PRD.
+**Objective:** Implement a high-performance, offline-first PWA according to the specified `docs/PRD`.
 
 ## Key Technical Requirements
 - **Local-First:** DO NOT use a cloud database for user tables. Use **Dexie.js** for IndexedDB management.
@@ -30,4 +30,5 @@
     - Merge to main when a feature is complete and verified.
 
 ## Reference Files
-- `PRD.md`: The source of truth for features and requirements.
+- `docs/PRD.md`: The source of truth for features and requirements.
+- `docs/PLAN.md`: The current development plan, roadmap, and upcoming features.
