@@ -1,17 +1,21 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { EntryService } from "../entryService";
 import { OracleTableService } from "../oracleTableService";
 
 describe("EntryService", () => {
-  it("should create an entry", async () => {
-    const tableId = await OracleTableService.createOracleTable({
+  //FIX:  this should not be any type, fix in createOracleTable, and then update here
+  let tableId: any;
+  beforeEach(async () => {
+    tableId = await OracleTableService.createOracleTable({
       title: "Test Table",
       game: "Game",
       type: "Type",
       tags: [],
       createdAt: Date.now(),
     });
+  });
 
+  it("should create an entry", async () => {
     const entryData = {
       tableId,
       value: "Test Result",
@@ -25,14 +29,6 @@ describe("EntryService", () => {
   });
 
   it("should get entries for a table", async () => {
-    const tableId = await OracleTableService.createOracleTable({
-      title: "Test Table",
-      game: "Game",
-      type: "Type",
-      tags: [],
-      createdAt: Date.now(),
-    });
-
     await EntryService.createEntry({
       tableId,
       value: "R1",
@@ -53,14 +49,6 @@ describe("EntryService", () => {
   });
 
   it("should update an entry", async () => {
-    const tableId = await OracleTableService.createOracleTable({
-      title: "Test Table",
-      game: "Game",
-      type: "Type",
-      tags: [],
-      createdAt: Date.now(),
-    });
-
     const id = await EntryService.createEntry({
       tableId,
       value: "Old",
@@ -74,14 +62,6 @@ describe("EntryService", () => {
   });
 
   it("should delete an entry", async () => {
-    const tableId = await OracleTableService.createOracleTable({
-      title: "Test Table",
-      game: "Game",
-      type: "Type",
-      tags: [],
-      createdAt: Date.now(),
-    });
-
     const id = await EntryService.createEntry({
       tableId,
       value: "Delete",
@@ -95,14 +75,6 @@ describe("EntryService", () => {
   });
 
   it("should delete all entries for a table", async () => {
-    const tableId = await OracleTableService.createOracleTable({
-      title: "Test Table",
-      game: "Game",
-      type: "Type",
-      tags: [],
-      createdAt: Date.now(),
-    });
-
     await EntryService.createEntry({
       tableId,
       value: "R1",
