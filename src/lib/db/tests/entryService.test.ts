@@ -48,6 +48,8 @@ describe("EntryService", () => {
 
     const entries = await EntryService.getEntriesByTable(tableId);
     expect(entries).toHaveLength(2);
+    expect(entries[0].value).toBe("R1");
+    expect(entries[1].value).toBe("R2");
   });
 
   it("should update an entry", async () => {
