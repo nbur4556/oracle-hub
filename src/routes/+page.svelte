@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	import { OracleTableService } from '$lib/db/oracleTableService';
 	import type { OracleTable } from '$lib/db/schema';
 	import TableCard from '$lib/components/TableCard.svelte';
 
 	let tables = $state<OracleTable[]>([]);
 	let searchQuery = $state('');
-	let isAdding = $state(false);
 
+	//TODO: use a functional component with error handling. See notes on the tables/[id] route 
 	async function loadTables() {
 		tables = await OracleTableService.getOracleTables();
 	}
@@ -16,7 +17,9 @@
 		loadTables();
 	});
 
+	// FIX: Search does not seem to be working for types
 	let filteredTables = $derived(
+		// TODO: should rename 't', it is not a good variable name. It is not descriptive. "table" should do just fine.
 		tables.filter(t => 
 			t.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
 			(t.game || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -25,6 +28,7 @@
 	);
 </script>
 
+<!-- Dashboard Page -->
 <div class="space-y-6">
 	<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
 		<div>
@@ -32,7 +36,7 @@
 			<p class="text-sm text-slate-500">Quickly access your random generators.</p>
 		</div>
 		<button 
-			onclick={() => isAdding = true}
+			onclick={() => goto('/tables/new')}
 			class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-indigo-700 transition-colors flex items-center gap-2 w-fit"
 		>
 			<span class="text-lg">+</span> New Table

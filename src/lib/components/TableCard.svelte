@@ -4,7 +4,7 @@
 	let { table } = $props<{ table: OracleTable }>();
 </script>
 
-<div class="p-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer group">
+<a href="/tables/{table.id}" class="block p-4 bg-white border border-slate-200 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer group">
 	<div class="flex justify-between items-start gap-3">
 		<div>
 			<h3 class="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">{table.title}</h3>
@@ -21,4 +21,4 @@
 			</span>
 		{/each}
 	</div>
-</div>
+</a>
