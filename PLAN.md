@@ -12,11 +12,11 @@
 - [x] Create a singleton `db.ts` service for database access.
 - [x] Implement basic table CRUD operations.
 
-## Phase 3: Table Management UI
-- [ ] Build a "Table List" dashboard.
-- [ ] Create "Add Table" and "Edit Table" forms.
-- [ ] Implement the mandatory roll range validation (ensuring no gaps/overlaps).
-- [ ] Add tags and game system categorization.
+## Phase 3: Table Management UI ✅
+- [x] Build a "Table List" dashboard.
+- [x] Create "Add Table" and "Edit Table" forms.
+- [x] Implement the mandatory roll range validation (ensuring no gaps/overlaps).
+- [x] Add tags and game system categorization.
 
 ## Phase 4: The Rolling Engine
 - [ ] Implement the random roll logic based on range.
