@@ -2,6 +2,7 @@ import { db } from "./db";
 import type { OracleTable, Entry } from "./schema";
 
 export const OracleTableService = {
+  //FIX: This is returning Promise<any>, should return the type expected for id
   async createOracleTable(table: Omit<OracleTable, "id">) {
     return await db.oracleTables.add(table);
   },
