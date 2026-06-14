@@ -37,6 +37,8 @@ describe("TableService", () => {
 
     const tables = await OracleTableService.getOracleTables();
     expect(tables).toHaveLength(2);
+    expect(tables[0].title).toBe("Table 1");
+    expect(tables[1].title).toBe("Table 2");
   });
 
   it("should update a table", async () => {
