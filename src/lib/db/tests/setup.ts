@@ -1,5 +1,6 @@
-import 'fake-indexeddb/auto';
-import { db } from '../db';
+import "fake-indexeddb/auto";
+import { db } from "../db";
+import { beforeEach } from "vitest";
 
 export async function clearDb() {
   await db.oracleTables.clear();
